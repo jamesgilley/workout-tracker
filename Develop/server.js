@@ -6,6 +6,27 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+app.use(express.static(__dirname));
+
+app.use(express.static("public"));
+
+app.get('/style.css', function(req, res) {
+    res.sendFile(__dirname + "/public/style.css");
+  });
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
+app.get('/exercise', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/exercise.html'));
+});
+
+app.get('/stats', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/stats.html'));
+});
+
+
 
 var nameSchema = new mongoose.Schema({
   firstName: String,
@@ -21,16 +42,18 @@ console.log(user)
 user.save().then(() => console.log('Done'))
 
 
+
+
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/Develop/public/index.html'));
+    res.send('/index.html');
 });
 
 app.get('/exercise', function(req, res) {
-    res.sendFile(path.join(__dirname + '/Develop/public/exercise.html'));
+    res.send('/exercise.html');
 });
 
 app.get('/stats', function(req, res) {
-    res.sendFile(path.join(__dirname + '/Develop/public/stats.html'));
+    res.send('/stats.html');
 });
 
 app.listen(3000);
