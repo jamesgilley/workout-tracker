@@ -22,7 +22,7 @@
     <div class="ui container exercise">
       <div class="ui raised card m-auto">
         <h2>Add Your Exercise</h2>
-        <form method="POST">
+        <form>
           <div class="workout-type"
             <label for="type">Exercise Type:</label>
             <select name="type" id="type">
@@ -69,19 +69,21 @@
           </div>
           <div class="buttons">
             <button disabled onclick="handleFormSubmit()" class="huge ui blue button complete">
-              Complete and Add Exercise
+              Complete
             </button>
-            
+            <button class="addExercise" disabled class="huge ui positive button add-another">
+              Edit Exercise
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
   <div id="toast">
-    Workout Added Successfully!
+    Workout Edited Successfully!
   </div>
   <script src="/api.js"></script>
-  <script src="/exercise.js"></script>
+  <script src="/update.js"></script>
 </body>
 
 </html>
