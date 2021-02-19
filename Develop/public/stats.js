@@ -53,7 +53,7 @@ function setData(){
 function getData(){
   console.log(JSON.parse(localStorage.getItem('res')))
   let workouts = JSON.parse(localStorage.getItem('res'))
-  console.log('workouts.length log',workouts.length)
+  /* console.log('workouts.length log',workouts.length) */
   const sumWeight = localStorage.getItem("sumWeight")
   const sumDuration = localStorage.getItem("sumDuration")
   
