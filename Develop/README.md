@@ -1,12 +1,9 @@
 start with:
-cd Develop
 npm i && node server.js
 
-Note:
-Will need users schema/model, exercises schema/model, and possibly workout plans schema/model.
-The exercises schema/model will need to include a ref: 'users'
-to reference the users model, and the exercise model will include
-a field for user that added/modified the exercise.
+Note1:
+Will need workouts schema/model made up of exercises that are added/
+modified via crud database functions.
 
 view app on localhost:3000
 
