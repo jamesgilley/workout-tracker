@@ -1,3 +1,6 @@
+Heroku Link: https://workout-tracker33.herokuapp.com/
+GitHub Link: https://github.com/jamesgilley/workout-tracker
+
 start with:
 npm i && node server.js
 
