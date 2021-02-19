@@ -1,10 +1,13 @@
-Heroku Link: https://workout-tracker33.herokuapp.com/
-GitHub Link: https://github.com/jamesgilley/workout-tracker
+# Heroku Link: https://workout-tracker33.herokuapp.com/
+# GitHub Link: https://github.com/jamesgilley/workout-tracker
 
-start with:
-npm i && node server.js
 
-Note1:
+# start with:
+* npm i && node server.js
+
+* refresh page if stats aren't loaded immediately
+
+# Note1:
 Will need workouts schema/model made up of exercises that are added/
 modified via crud database functions.
 
