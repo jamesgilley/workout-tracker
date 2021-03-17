@@ -13,7 +13,6 @@ const completeButton = document.querySelector("button.complete");
 const addButton = document.querySelector("button.add-another");
 const toast = document.querySelector("#toast");
 const newWorkout = document.querySelector(".new-workout")
-//const axios = require('axios');
 
 let workoutType = null;
 let shouldNavigateAway = false;
@@ -119,9 +118,8 @@ async function handleFormSubmit(event) {
   console.log(workoutData)
   //let req.body.workoutData = workoutData;
   //await API.addExercise(workoutData);
-  //axios.post("/addworkout", JSON.stringify(workoutData))
-  fetch("/addworkout", {
-    method: 'POST',
+  fetch(`/workoutedit`, {
+    method: 'PUT',
     headers:{
       'content-type': 'application/json'
     },
@@ -130,7 +128,7 @@ async function handleFormSubmit(event) {
     
   })
   .then(res => res.json())
-  .then(res => console.log(res, 'workout data added to db'))
+  .then(res => console.log(res, 'workout data updated in db'))
   .catch(err => console.log(err))
  // clearInputs();
  // toast.classList.add("success");

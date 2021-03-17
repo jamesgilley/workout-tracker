@@ -1,3 +1,107 @@
+window.onload = function (){
+  getBasicStats();
+  getSetData();
+}
+
+let basicStats = {};
+
+function getBasicStats()
+{
+  let duration = 0;
+  let weight = 0;
+  fetch("/api/workouts", {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(res => {
+   res.forEach(r => {
+     if(r.exercises)
+     {
+       if(r.exercises.length)
+       {
+         duration += parseInt(r.exercises[0].duration);
+         weight += parseInt(r.exercises[0].weight);
+       }
+     }
+   })
+   basicStats["duration"] = duration
+   basicStats["weight"] = weight
+   
+   document.getElementById("durationOutput").innerHTML = duration;
+   document.getElementById("weightOutput").innerHTML = weight;
+  })
+}
+
+function getSetData(){
+  setData();
+  getData();
+}
+
+
+
+function setData(){
+  fetch("/api/workouts", {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(res => {
+    let myArr = []
+    console.log('res ====>', res)
+     res.forEach(single => {
+       let parsedDuration = parseInt(single.duration)
+      myArr.push(parsedDuration)
+     })
+     let slicedArr =  myArr.slice(0, 7)
+     let summedVal = slicedArr.reduce((a,b) => {
+       return a + b
+     }, 0)
+
+     console.log("sumDuration ====>", summedVal)
+     localStorage.setItem("sumDuration", summedVal)
+
+     let myArr2 = []
+    console.log('res2 ====>', res)
+     res.forEach(single => {
+       let parsedWeight = parseInt(single.weight)
+      myArr2.push(parsedWeight)
+     })
+     let slicedArr2 =  myArr2.slice(0, 7)
+     let summedVal2 = slicedArr.reduce((a,b) => {
+       return a + b
+     }, 0)
+
+     console.log("sumWeight ====>", summedVal2)
+     localStorage.setItem("sumWeight", summedVal2)
+  })
+  .catch(err => console.log(err))
+ 
+}
+//let array1 = ['a', 'b', 'c', 'd'];
+// console.log(array1[array1.length-1])
+
+function getData(){
+  console.log(JSON.parse(localStorage.getItem('res')))
+  if(localStorage.getItem('res')){
+   let workouts = JSON.parse(localStorage.getItem('res'))
+  }
+  const sumWeight = localStorage.getItem("sumWeight")
+  const sumDuration = localStorage.getItem("sumDuration")
+  
+   document.querySelector(".durationOutput").textContent = sumDuration;
+   
+   //let weight7 = parseInt(workouts[workouts.length-1].weight) + parseInt(workouts[workouts.length-2].weight) + parseInt(workouts[workouts.length-3].weight) + parseInt(workouts[workouts.length-4].weight) + parseInt(workouts[workouts.length-5].weight) + parseInt(workouts[workouts.length-6].weight) + parseInt(workouts[workouts.length-7].weight)
+   //console.log(weight7);
+   document.querySelector(".weightOutput").textContent = sumWeight;
+}
+
+/* function calculateDuration7(){
+   let workouts = JSON.parse(localStorage.getItem('res'))
+   let duration7 = workouts[0].duration + workouts[1].duration + workouts[2].duration + workouts[3].duration + workouts[4].duration + workouts[5].duration + workouts[6].duration
+   console.log(duration7);
+  //document.querySelector(".durationOutput").textContent = 10;
+   document.querySelector(".durationOutput").textContent = duration7;
+} */
+
 function generatePalette() {
   const arr = [
     '#003f5c',

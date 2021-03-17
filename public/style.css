@@ -1,3 +1,7 @@
+/* .buttons{
+  width: 95%;
+} */
+
 *,
 *::before,
 *::after {
@@ -404,7 +408,7 @@ form > button {
 
 .buttons .ui.button {
   margin: 0;
-  width: 50%;
+  width: 100%;
 }
 
 .ui.card h2 {

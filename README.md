@@ -1,7 +1,11 @@
-run with:
-npm i && npm start
+start with:
+npm i && node server.js
 
-note - localhost can view on localhost:8000;
+Note1:
+Will need workouts schema/model made up of exercises that are added/
+modified via crud database functions.
+
+view app on localhost:3000
 
 # Unit 17 NoSQL Homework: Workout Tracker
 

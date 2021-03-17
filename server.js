@@ -77,23 +77,22 @@ workoutSchema.method("toJSON", function() {
 var Workout = mongoose.model("Workout", workoutSchema);
 
 // workout routes
-app.get("/workouts", (req, res ) => {
+app.get("/api/workouts", (req, res ) => {
   Workout.find({}).sort({createdAt: -1})
   .then(workouts => {
       console.log(workouts)
-      
       res.send(workouts)
   })
 })
 
-app.delete("/workouts", (req, res) => {
+app.delete("/api/workouts", (req, res) => {
   Workout.deleteMany({}, ()=>{
       console.log("all workouts deleted")
       res.send({msg: "all workouts deleted"})
   })
 })
 
-app.post("/addworkout", (req, res) => {
+app.post("/api/addworkout", (req, res) => {
   console.log('server post /addworkout endpoint log.')
   console.log(req.body)
   var myData = new Workout(req.body);
@@ -106,7 +105,7 @@ app.post("/addworkout", (req, res) => {
       }); 
 });
 
-app.delete("/workout/:id", (req, res) => {
+app.delete("/api/workout/:id", (req, res) => {
   Workout.findByIdAndRemove(req.params.id, (error, data) => {
       if (error) {
           return (error);
@@ -117,7 +116,7 @@ app.delete("/workout/:id", (req, res) => {
   })
 })
 
-app.put("/workoutedit", (req, res) => {
+app.put("/api/workoutedit", (req, res) => {
   let id = ""
  // console.log('Edit happened2', req.body.name)
   //Workout.findByIdAndUpdate(req.params.id, { $set: req.body}, (error, data) => {
