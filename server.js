@@ -78,11 +78,12 @@ var Workout = mongoose.model("Workout", workoutSchema);
 
 // workout routes
 app.get("/api/workouts", (req, res ) => {
-  Workout.find({}).sort({createdAt: -1})
+  Workout.find({}).sort({createdAt: -1}).limit(7)
   .then(workouts => {
       console.log(workouts)
       res.send(workouts)
   })
+
 })
 
 app.delete("/api/workouts", (req, res) => {
@@ -93,14 +94,14 @@ app.delete("/api/workouts", (req, res) => {
 })
 
 app.post("/api/addworkout", (req, res) => {
-  console.log('server post /addworkout endpoint log.')
-  console.log(req.body)
   var myData = new Workout(req.body);
   myData.save()
       .then(item => {
           res.send(item);
+          console.log("Was inserted")
       })
       .catch(err => {
+          console.log("Was not inserted")
           res.status(400).send("Unable to save to database");
       }); 
 });

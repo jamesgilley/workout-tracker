@@ -47,7 +47,7 @@ function handleWorkoutTypeChange(event) {
     resistanceForm.classList.add("d-none");
   }
 
-  validateInputs();
+  // validateInputs();
 }
 
 function validateInputs() {
@@ -89,10 +89,10 @@ function validateInputs() {
 
   if (isValid) {
     completeButton.removeAttribute("disabled");
-    addButton.removeAttribute("disabled");
+    // addButton.removeAttribute("disabled");
   } else {
     completeButton.setAttribute("disabled", true);
-    addButton.setAttribute("disabled", true);
+    // addButton.setAttribute("disabled", true);
   }
 }
 
@@ -100,8 +100,6 @@ async function handleFormSubmit(event) {
   event.preventDefault();
 
   let workoutData = {};
-  let workout = {};
-  let workouts = [];
 
   if (workoutType === "cardio") {
     workoutData.type = "cardio";
@@ -116,18 +114,17 @@ async function handleFormSubmit(event) {
     workoutData.reps = Number(repsInput.value.trim());
     workoutData.duration = Number(resistanceDurationInput.value.trim());
   }
-  console.log(workoutData)
+
   //let req.body.workoutData = workoutData;
   //await API.addExercise(workoutData);
   //axios.post("/addworkout", JSON.stringify(workoutData))
-  fetch("/addworkout", {
+  fetch("/api/addworkout", {
     method: 'POST',
     headers:{
       'content-type': 'application/json'
     },
     body:
      JSON.stringify(workoutData)
-    
   })
   .then(res => res.json())
   .then(res => console.log(res, 'workout data added to db'))

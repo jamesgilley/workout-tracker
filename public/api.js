@@ -24,21 +24,21 @@ const API = {
     return json;
   },
   async createWorkout(data = {}) {
-    const res = await fetch("/api/workouts", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    });
+    // const res = await fetch("/api/workouts", {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    //   headers: { "Content-Type": "application/json" }
+    // });
 
-    const json = await res.json();
+    // const json = await res.json();
 
-    return json;
+    // return json;
   },
 
-  async getWorkoutsInRange() {
-    const res = await fetch(`/api/workouts/range`);
-    const json = await res.json();
+  // async getWorkoutsInRange() {
+  //   const res = await fetch(`/api/workouts/range`);
+  //   const json = await res.json();
 
-    return json;
-  },
+  //   return json;
+  // },
 };

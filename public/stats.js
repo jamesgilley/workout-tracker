@@ -15,14 +15,8 @@ function getBasicStats()
   .then(res => res.json())
   .then(res => {
    res.forEach(r => {
-     if(r.exercises)
-     {
-       if(r.exercises.length)
-       {
-         duration += parseInt(r.exercises[0].duration);
-         weight += parseInt(r.exercises[0].weight);
-       }
-     }
+     duration += parseInt(r.duration);
+     weight += parseInt(r.weight);
    })
    basicStats["duration"] = duration
    basicStats["weight"] = weight
@@ -87,11 +81,11 @@ function getData(){
   const sumWeight = localStorage.getItem("sumWeight")
   const sumDuration = localStorage.getItem("sumDuration")
   
-   document.querySelector(".durationOutput").textContent = sumDuration;
+  //  document.querySelector(".durationOutput").textContent = sumDuration;
    
    //let weight7 = parseInt(workouts[workouts.length-1].weight) + parseInt(workouts[workouts.length-2].weight) + parseInt(workouts[workouts.length-3].weight) + parseInt(workouts[workouts.length-4].weight) + parseInt(workouts[workouts.length-5].weight) + parseInt(workouts[workouts.length-6].weight) + parseInt(workouts[workouts.length-7].weight)
    //console.log(weight7);
-   document.querySelector(".weightOutput").textContent = sumWeight;
+  //  document.querySelector(".weightOutput").textContent = sumWeight;
 }
 
 /* function calculateDuration7(){
@@ -309,4 +303,4 @@ function workoutNames(data) {
 }
 
 // get all workout data from back-end
-API.getWorkoutsInRange().then(populateChart);
+// API.getWorkoutsInRange().then(populateChart);
